@@ -1,0 +1,53 @@
+     <!DOCTYPE html>
+<html>
+<head>
+  <title>Timed Access</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 60px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 id="early">⏳ This link is not live yet</h2>
+
+<div id="live" class="hidden">
+  <h2>Access is LIVE</h2>
+  <p>Click below:</p>
+  <a href="https://mksmdi.unaux.com/om3/index.html" target="_blank">
+    Open Link
+  </a>
+</div>
+
+<h2 id="expired" class="hidden"> This link has expired</h2>
+
+<script>
+  // SET TIME HERE
+  const startTime = new Date("2026-01-15T20:45:00+05:30").getTime();
+  const endTime = startTime + (20 * 60 * 1000); // 20 minutes
+
+  const now = new Date().getTime();
+
+  document.getElementById("early").style.display = "none";
+  document.getElementById("live").style.display = "none";
+  document.getElementById("expired").style.display = "none";
+
+  if (now < startTime) {
+    document.getElementById("early").style.display = "block";
+  } else if (now >= startTime && now <= endTime) {
+    document.getElementById("live").style.display = "block";
+  } else {
+    document.getElementById("expired").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
